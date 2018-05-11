@@ -2,7 +2,9 @@
 
 namespace App\Controllers\Admin;
 
-class PostController{
+use App\Controllers\BaseController;
+
+class PostController extends BaseController{
     public function getIndex(){
         // /post-list or post-list/index
         global $pdo;
@@ -11,12 +13,12 @@ class PostController{
         $query->execute();
 
         $blogPosts = $query->fetchAll(\PDO::FETCH_ASSOC);
-        return renderAdmin('../views/admin-post-list.php', ['pageTitle' => $pageTitle, 'blogPosts' => $blogPosts]);
+        return $this->renderAdmin('admin-post-list.twig', ['pageTitle' => $pageTitle, 'blogPosts' => $blogPosts]);
     }
 
     public function getAdd(){
         $pageTitle = 'Add Post';
-        return renderAdmin('../views/admin-add-post.php', ['pageTitle' => $pageTitle]);
+        return $this->renderAdmin('admin-add-post.twig', ['pageTitle' => $pageTitle]);
     }
 
     public function postAdd(){
@@ -32,6 +34,6 @@ class PostController{
             'title'=>$title,
             'content'=>$content
         ]);
-        return renderAdmin('../views/admin-add-post.php', ['pageTitle' => $pageTitle, 'result' => $result]);
+        return $this->renderAdmin('admin-add-post.twig', ['pageTitle' => $pageTitle, 'result' => $result]);
     }
 }

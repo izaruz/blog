@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
-class IndexController{
+use App\Controllers\BaseController;
+
+class IndexController extends BaseController{
 
     public function getIndex(){
         global $pdo;
@@ -11,7 +13,7 @@ class IndexController{
         $query->execute();
 
         $blogPosts = $query->fetchAll(\PDO::FETCH_ASSOC);
-        return renderHome('../views/home-index.php', ['pageTitle' => $pageTitle, 'blogPosts' => $blogPosts]);
+        return $this->renderHome('home-index.twig', ['pageTitle' => $pageTitle, 'blogPosts' => $blogPosts]);
     }
 
 }
