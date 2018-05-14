@@ -5,6 +5,8 @@ error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 
+session_start();
+
 $dotenv = new \Dotenv\Dotenv(__DIR__ . '/..');
 $dotenv->load();
 
@@ -39,6 +41,8 @@ $router = new RouteCollector();
 $router->controller('/', App\Controllers\IndexController::class);
 
 $router->controller('/admin', App\Controllers\Admin\IndexController::class);
+
+$router->controller('/auth', App\Controllers\AuthController::class);
 
 $router->controller('/user', App\Controllers\Admin\UserController::class);
 

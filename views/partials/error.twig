@@ -1,0 +1,10 @@
+<div class="alert alert-danger" role="alert">
+    <p><strong>Error!</strong></p>
+    <ul>
+        {% for input, messages in errors %}
+            {% for message in messages %}
+                <li>{{ input }}: {{ message }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
