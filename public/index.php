@@ -40,6 +40,8 @@ $router->controller('/', App\Controllers\IndexController::class);
 
 $router->controller('/admin', App\Controllers\Admin\IndexController::class);
 
+$router->controller('/user', App\Controllers\Admin\UserController::class);
+
 $router->controller('/post-list', App\Controllers\Admin\PostController::class);
 
 

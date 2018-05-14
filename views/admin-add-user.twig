@@ -1,0 +1,34 @@
+{% extends "admin-layout.twig" %}
+
+{% block content %}
+    {% if result %}
+        <div class="alert alert-success" role="alert">Success!</div>
+    {% endif %}
+    {% if errors %}
+        <div class="alert alert-danger" role="alert">
+            <p><strong>Error!</strong></p>
+            <ul>
+                {% for input, messages in errors %}
+                    {% for message in messages %}
+                        <li>{{ input }}: {{ message }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <form method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name" aria-describedby="name" placeholder="Enter Title">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email" aria-describedby="email" placeholder="Enter Email">
+        </div>
+        <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" class="form-control" name="pass" id="pass" aria-describedby="pass" placeholder="Enter Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Add user</button>
+    </form>
+{% endblock %}
