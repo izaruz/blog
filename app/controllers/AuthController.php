@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Log;
 use App\Controllers\BaseController;
 use App\Models\User;
 use Sirius\Validation\Validator;
@@ -27,6 +28,7 @@ class AuthController extends BaseController{
             if ($user) {
                 if (password_verify($_POST['pass'], $user->password)) {
                     $_SESSION['userId'] = $user->id;
+                    Log::logInfo('Login userId: '.$user->id);
                     header('Location:' . BASE_URL . 'admin');
                     return null;
                 }
