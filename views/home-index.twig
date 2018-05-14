@@ -6,9 +6,11 @@
     <div class="blog-post">
         <h3>{{ blogPost.title }}</h3>
         <p>Jan 1, 2018 by <a href="#">Isaac</a></p>
+        {% if blogPost.img_url %}
         <div class="blog-post-image">
-            <img src="images/post-1.jpg" alt="">
+            <img src="{{ blogPost.img_url }}" class="img-fluid" alt="">
         </div>
+        {% endif %}
         <div class="blog-post-content">
             <p>{{ blogPost.content }}</p>
         </div>
